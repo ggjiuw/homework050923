@@ -14,8 +14,8 @@ response = requests.get(url=url, params=params)
 result = response.json()
 products = result['trip']
 
-total_price = sum([product['price'] for product in products])
-total_price_with_gluten = sum([product['price'] for product in products if product['contains_gluten'] == True])
+total_price = sum([product['price']  * product['remainder'] for product in products])
+total_price_with_gluten = sum([product['price']  * product['remainder'] for product in products if product['contains_gluten'] == True])
 
 # print(total_price)
 # print(total_price_with_gluten)
